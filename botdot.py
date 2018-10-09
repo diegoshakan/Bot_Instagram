@@ -1,4 +1,5 @@
 from selenium import webdriver
+from time import  sleep
 
 
 #You must download the chromedriver if you will use the navigator Chrome.
@@ -20,3 +21,16 @@ password_name.send_keys(password)
 
 login_acess = driver.find_element_by_class_name('Igw0E')
 login_acess.submit()
+
+# sleep here, because the bot need a time for the cause velocity of internet.
+sleep(2.0)
+notification = driver.find_element_by_class_name('aOOlW')
+notification.click()
+
+# Test of like
+sleep(2.0)
+like = driver.find_elements_by_class_name('coreSpriteHeartOpen')
+like[0].click()
+sleep(2.0)
+like[1].click()
+
