@@ -4,8 +4,8 @@ from time import sleep
 
 #You must download the chromedriver if you will use the navigator Chrome.
 #driver = webdriver.Chrome('/home/shakan/Downloads/chromedriver') #This parameter is necessary, because I use the navigator Chrome.
-driver = webdriver.Chrome(
-    'C:/Users/User/Downloads/chromedriver_win32/chromedriver.exe')
+driver = webdriver.Chrome('chromedriver.exe')
+
 # this is url of Instagram
 driver.get(
     'https://www.instagram.com/accounts/login/?hl=pt-br&source=auth_switcher')
