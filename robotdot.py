@@ -1,5 +1,5 @@
 from selenium import webdriver
-from time import  sleep
+from time import sleep
 
 
 #You must download the chromedriver if you will use the navigator Chrome.
