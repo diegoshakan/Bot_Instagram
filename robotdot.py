@@ -59,10 +59,10 @@ class Robotdot:
                 pass
 
             try:
-                sleep(random.randint(1, 4))
+                sleep(random.randint(3, 7))
                 comment_write = lambda: driver.find_element_by_xpath('//textarea[@aria-label="Adicione um comentário..."]')
                 comment_write().clear()
-                sleep(random.randint(5, 10))
+                sleep(random.randint(3, 10))
                 comment_write().send_keys(random.choice(comments))
                 comment_write().send_keys(Keys.ENTER)
 
