@@ -1,4 +1,8 @@
-from imports import *
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+import random
+from time import sleep
 from robotdot import Robotdot
 
 user = input('Username: ')
@@ -16,4 +20,4 @@ tag = tag.lower()
 ig = Robotdot(user, password)
 ig.login()
 # here, you put the hashtag that you are looking for - Coloque aqui a hashtag que vc está procurando
-ig.page(tag , esc)
+ig.page(tag, esc)
