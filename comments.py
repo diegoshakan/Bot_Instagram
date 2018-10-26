@@ -9,4 +9,5 @@ comments = ['Show!', 'Caramba!', 'Legal', 'Curti demais', 'Sensacional', 'Demais
                     'Merece mil curtidas essa foto', 'Best pic today ever', 'A melhor foto de hoje',
                     'Isso fala muito!',
                     'Original!', 'Perfect!!! =D', 'The best of today!!!', 'Que Legal','Nossa eu quero!!',
-                    'Sempre acontece isso','O que?? Sério que isso acontece?','Como você fez isso?','Cool']
+                    'Sempre acontece isso','O que?? Sério que isso acontece?','Como você fez isso?','Cool','muito legal','maneiro','daora',
+                    'gostei desse perfil']
