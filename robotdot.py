@@ -1,5 +1,6 @@
 from imports import *
 
+
 class Robotdot:
     def __init__(self, username, password):
         self.username = username
@@ -15,6 +16,7 @@ class Robotdot:
 
     def login(self):
         driver = self.driver
+        sleep(1)
         driver.get('https://www.instagram.com/accounts/login/?hl=pt-br&source=auth_switcher')
         username_input = driver.find_element_by_xpath('//input[@name="username"]')
         username_input.send_keys(self.username)
@@ -23,8 +25,8 @@ class Robotdot:
         sleep(2)
         enter_submit = driver.find_element_by_class_name('Igw0E')
         enter_submit.submit()
-        sleep(2)
-    
+        sleep(1)
+
     def comment(self):
         driver = self.driver
         """try:
@@ -35,16 +37,16 @@ class Robotdot:
         except NoSuchElementException:
             pass"""
             
-        # == Comments
+
         try:
-            sleep(random.randint(3, 7))
+            sleep(random.randint(2, 4))
             def comment_write(): return driver.find_element_by_xpath('//textarea[@aria-label="Adicione um comentário..."]')
             comment_write().clear()
-            sleep(random.randint(3, 10))
+            sleep(random.randint(3, 7))
             text = random.choice(comments)
             for i in text:
                 comment_write().send_keys(i)
-                sleep(0.3)
+                sleep(random.randint(3, 10)/30)
             comment_write().send_keys(Keys.ENTER)
 
         except StaleElementReferenceException and NoSuchElementException as e:
@@ -89,7 +91,8 @@ class Robotdot:
         for photo_link in photos_links:
             driver.get(photo_link)
             driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
-            
+
+            sleep(1)
             self.comment()
             self.like()
 

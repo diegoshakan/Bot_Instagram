@@ -1,12 +1,10 @@
-# Arq. com todos imports necessários
-
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 import random
 from time import sleep
+from comments import *
 
-from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
-from selenium.webdriver.common.keys import Keys
+# Arq. com todos imports necessários
 
-# outros programas .py
-from comments import comments
 

@@ -1,4 +1,3 @@
-from imports import *
 from robotdot import Robotdot
 
 user = input('Username: ')
@@ -17,14 +16,14 @@ while True:
             tag = input('Hastag ou perfil: ')
             tag = tag.lower()
 
-            # put here your username and password as arguments - coloque seu usuário e senha
+            # put here your username a# put here your username and password as arguments - coloque seu usuário e senha
             ig = Robotdot(user, password)
             ig.login()
-            
+
             # here, you put the hashtag that you are looking for - Coloque aqui a hashtag que vc está procurando
             ig.page(tag, esc)
-            
-        elif x==2:
+
+        elif x == 2:
             ig = Robotdot(user, password)
             ig.login()
             ig.perfis()
