@@ -6,6 +6,12 @@ class Robotdot:
         self.password = password
         #self.driver = webdriver.Chrome('/home/shakan/Downloads/chromedriver')
         self.driver = webdriver.Chrome('chromedriver.exe')
+    
+    def baixa_page(self,vezes):
+        #um loop para baixar a página e atualizar as fotos - loop to looking for photos and update them
+        for i in range(vezes):
+            self.driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
+            sleep(0.5)
 
     def login(self):
         driver = self.driver
@@ -59,7 +65,10 @@ class Robotdot:
         except Exception as e:
             sleep(2)
 
+            
+
     def page(self, hashtag, esc):
+        ''' Somente para determinados Perfis ou Hastag '''
         driver = self.driver
         if esc == 2:
             driver.get('https://www.instagram.com/explore/tags/' + hashtag + '/') # para hashtag
@@ -67,10 +76,7 @@ class Robotdot:
             driver.get('https://www.instagram.com/'+hashtag+'/') # para perfis
         sleep(2)
 
-        #um loop para baixar a página e atualizar as fotos - loop to looking for photos and update them
-        for i in range(1, 3):
-            driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
-            sleep(1)
+        self.baixa_page(3)
 
 
         #após atualizar as fotos na página, receber seus respectivos endereços
@@ -78,7 +84,7 @@ class Robotdot:
         photos_links = [elem.get_attribute('href') for elem in links]
         photos_links = [href for href in photos_links if hashtag in href]
         print(hashtag + ' photos ' + str(len(photos_links)))
-
+        
                     
         for photo_link in photos_links:
             driver.get(photo_link)
@@ -86,3 +92,47 @@ class Robotdot:
             
             self.comment()
             self.like()
+
+
+    def perfis(self):
+        ''' 
+        Entra na página de sugestões de pessoas para seguir 
+        e entra no perfil de algumas e curti 3 fotos de cada
+        '''
+        sleep(3)
+        driver = self.driver
+        driver.get('https://www.instagram.com/explore/people/suggested/')
+
+        self.baixa_page(3)
+        sleep(3)
+        
+        links = driver.find_elements_by_class_name('FPmhX')
+        people = [elem.get_attribute('href') for elem in links]
+
+        for person in people:
+            # Entrando em cada pessoa ...
+            driver.get(person)
+            
+            sleep(5)
+
+            self.baixa_page(2)
+
+            links_photos = driver.find_elements_by_tag_name('a')
+            photos = [elem.get_attribute('href') for elem in links_photos]
+            photos = [href for href in photos if '/p/' in href]
+
+            # Se a pessoa tem mais de 3 fotos, o robobot só curtirá somente 3
+            if len(photos) >=3:
+                for photo in range(3):
+                    driver.get(photos[photo])
+                    self.like()
+                    sleep(0.5)
+            # Se a pessoa tem menos que 3 fotos, o robobot curtirá quantas fotos tiverem
+            else:
+                for photo in photos:
+                    driver.get(photo)
+                    self.like()
+                    sleep(0.5)
+            
+
+        
