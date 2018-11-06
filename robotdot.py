@@ -12,7 +12,7 @@ class Robotdot:
         #um loop para baixar a página e atualizar as fotos - loop to looking for photos and update them
         for i in range(vezes):
             self.driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
-            sleep(0.5)
+            sleep(3)
 
     def login(self):
         driver = self.driver
@@ -25,7 +25,7 @@ class Robotdot:
         sleep(2)
         enter_submit = driver.find_element_by_class_name('Igw0E')
         enter_submit.submit()
-        sleep(1)
+        sleep(2)
 
     def comment(self):
         driver = self.driver
@@ -78,13 +78,15 @@ class Robotdot:
             driver.get('https://www.instagram.com/'+hashtag+'/') # para perfis
         sleep(2)
 
-        self.baixa_page(3)
-
+        for i in range(3):
+            self.driver.execute_script(
+                'window.scrollTo(0, document.body.scrollHeight);')
+            sleep(1)
 
         #após atualizar as fotos na página, receber seus respectivos endereços
         links = driver.find_elements_by_tag_name('a')
         photos_links = [elem.get_attribute('href') for elem in links]
-        photos_links = [href for href in photos_links if hashtag in href]
+        photos_links = [href for href in photos_links if '/p/' in href]
         print(hashtag + ' photos ' + str(len(photos_links)))
         
                     
@@ -92,7 +94,7 @@ class Robotdot:
             driver.get(photo_link)
             driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
 
-            sleep(1)
+            sleep(1)    
             self.comment()
             self.like()
 
