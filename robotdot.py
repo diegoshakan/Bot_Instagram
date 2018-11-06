@@ -107,7 +107,7 @@ class Robotdot:
         driver = self.driver
         driver.get('https://www.instagram.com/explore/people/suggested/')
 
-        self.baixa_page(3)
+        self.baixa_page(5)
         sleep(3)
         
         links = driver.find_elements_by_class_name('FPmhX')
@@ -130,12 +130,14 @@ class Robotdot:
                 for photo in range(3):
                     driver.get(photos[photo])
                     self.like()
+                    self.comment()
                     sleep(0.5)
             # Se a pessoa tem menos que 3 fotos, o robodot curtirá quantas fotos tiverem
             else:
                 for photo in photos:
                     driver.get(photo)
                     self.like()
+                    self.comment()
                     sleep(0.5)
             
 
