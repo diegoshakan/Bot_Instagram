@@ -78,10 +78,7 @@ class Robotdot:
             driver.get('https://www.instagram.com/'+hashtag+'/') # para perfis
         sleep(2)
 
-        for i in range(3):
-            self.driver.execute_script(
-                'window.scrollTo(0, document.body.scrollHeight);')
-            sleep(1)
+        self.baixa_page(5)
 
         #após atualizar as fotos na página, receber seus respectivos endereços
         links = driver.find_elements_by_tag_name('a')
@@ -108,13 +105,17 @@ class Robotdot:
         driver = self.driver
         driver.get('https://www.instagram.com/explore/people/suggested/')
 
+        sleep(1)
         self.baixa_page(5)
-        sleep(3)
+        sleep(2)
         
-        links = driver.find_elements_by_class_name('FPmhX')
-        people = [elem.get_attribute('href') for elem in links]
+        div = driver.find_elements_by_class_name('_7UhW9')
+        a = driver.find_elements_by_tag_name('a')
+        links = [elem.get_attribute('href') for elem in a]
+        #people = [elem.get_attribute('href') for elem in links]
+        print(links)
 
-        for person in people:
+        for person in links:
             # Entrando em cada pessoa ...
             driver.get(person)
             
