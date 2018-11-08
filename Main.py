@@ -1,9 +1,9 @@
 from robotdot import Robotdot
 
-# user = input('Username: ')
-# password = input('Password: ')
-user = 'geektest'
-password = 'testando123'
+user = input('Username: ')
+password = input('Password: ')
+# user = 'geektest'
+#password = 'testando123'
 
 while True:
     x = int(input('[1] Perfil ou tag\n[2] Curtir fotos de pessoas sugeridas\nEscolha: '))
@@ -30,3 +30,4 @@ while True:
             ig.login()
             ig.perfis()
             break
+        break

@@ -5,8 +5,8 @@ class Robotdot:
     def __init__(self, username, password):
         self.username = username
         self.password = password
-        #self.driver = webdriver.Chrome('/home/shakan/Downloads/chromedriver')
-        self.driver = webdriver.Chrome('chromedriver.exe')
+        self.driver = webdriver.Chrome('/home/shakan/Documentos/Bot_Instagram/chromedriver')
+        #self.driver = webdriver.Chrome('chromedriver.exe')
     
     def baixa_page(self,vezes):
         #um loop para baixar a página e atualizar as fotos - loop to looking for photos and update them
@@ -18,6 +18,7 @@ class Robotdot:
         driver = self.driver
         sleep(1)
         driver.get('https://www.instagram.com/accounts/login/?hl=pt-br&source=auth_switcher')
+        sleep(2)
         username_input = driver.find_element_by_xpath('//input[@name="username"]')
         username_input.send_keys(self.username)
         password_input = driver.find_element_by_xpath('//input[@name="password"]')
@@ -127,14 +128,14 @@ class Robotdot:
             photos = [elem.get_attribute('href') for elem in links_photos]
             photos = [href for href in photos if '/p/' in href]
 
-            # Se a pessoa tem mais de 3 fotos, o robobot só curtirá somente 3
+            # Se a pessoa tem mais de 3 fotos, o robodot só curtirá somente 3
             if len(photos) >=3:
                 for photo in range(3):
                     driver.get(photos[photo])
                     self.like()
                     self.comment()
                     sleep(0.5)
-            # Se a pessoa tem menos que 3 fotos, o robobot curtirá quantas fotos tiverem
+            # Se a pessoa tem menos que 3 fotos, o robodot curtirá quantas fotos tiverem
             else:
                 for photo in photos:
                     driver.get(photo)
