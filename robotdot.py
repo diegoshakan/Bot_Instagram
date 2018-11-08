@@ -87,7 +87,6 @@ class Robotdot:
         photos_links = [elem.get_attribute('href') for elem in links]
         photos_links = [href for href in photos_links if hashtag in href]
         print(hashtag + ' photos ' + str(len(photos_links)))
-        sleep(2)
         
                     
         for photo_link in photos_links:
@@ -95,9 +94,8 @@ class Robotdot:
             driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
 
             sleep(1)
-            self.like()
-            sleep(1)
             self.comment()
+            self.like()
 
 
     def perfis(self):
