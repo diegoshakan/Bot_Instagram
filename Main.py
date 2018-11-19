@@ -6,9 +6,10 @@ password = input('Password: ')
 #password = 'testando123'
 
 while True:
-    x = int(input('[1] Perfil ou tag\n[2] Curtir fotos de pessoas sugeridas\nEscolha: '))
-    if x==1 or x==2:
-        if x==1:
+    x = int(
+        input('[1] Perfil ou tag\n[2] Curtir fotos de pessoas sugeridas\nEscolha: '))
+    if x == 1 or x == 2:
+        if x == 1:
             while True:
                 esc = int(input('[1]Perfil ou [2]tag: '))
                 if esc == 1 or esc == 2:
